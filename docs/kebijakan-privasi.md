@@ -1,29 +1,36 @@
 # Kebijakan Privasi Modapack Fund
 
-_Templat — sesuaikan dengan data perusahaan dan tinjau bersama konsultan hukum sebelum dipublikasikan. Google Play mewajibkan tautan publik ke kebijakan privasi (mis. di situs web perusahaan)._
+Halaman kebijakan privasi siap publikasi ada di [`kebijakan-privasi.html`](kebijakan-privasi.html):
+satu file HTML mandiri (tanpa file pendukung), responsif, dan mendukung mode gelap.
 
-**Terakhir diperbarui:** [tanggal]
+## Sebelum dipublikasikan
 
-[Nama badan hukum perusahaan] ("Kami") mengelola aplikasi Modapack Fund. Kebijakan ini menjelaskan data apa yang kami kumpulkan dan bagaimana kami menggunakannya, sesuai UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi.
+1. Ganti semua bagian bersorot kuning (`class="isi"`). Cek sisa placeholder dengan:
+   `grep -o 'class="isi">[^<]*' docs/kebijakan-privasi.html`
+   - `[tanggal berlaku]`, `[tahun]`
+   - `[nama badan hukum]` (dua tempat, plus contoh di bagian 1)
+   - `[wilayah server]` — sesuai region proyek Supabase (Project Settings → General)
+   - `[email privasi]`, `[nomor telepon]`, `[alamat kantor lengkap]`
+2. Ganti setiap `<span class="isi">[...]</span>` utuh dengan teks biasa, supaya sorotan kuningnya ikut hilang.
+3. Minta konsultan hukum meninjau isinya, terutama bagian dasar pemrosesan, transfer data
+   ke luar negeri, dan retensi dokumen perjanjian.
 
-## Data yang kami kumpulkan
-- **Data akun:** nama lengkap, alamat email, nomor HP/WhatsApp, kota domisili, pekerjaan.
-- **Data pengajuan investasi:** proyek yang dipilih, nominal, catatan, dan riwayat status.
-- Kami **tidak** memproses pembayaran atau menyimpan data kartu/rekening di aplikasi.
+## Tempat mempublikasikan
 
-## Penggunaan data
-- Menghubungi Anda untuk verifikasi identitas (KYC) dan tindak lanjut pengajuan.
-- Menyusun perjanjian investasi dan melaporkan perkembangan proyek.
-- Memenuhi kewajiban hukum yang berlaku.
+Google Play mewajibkan URL publik yang aktif dan tidak berupa PDF. Pilihan:
+- **Situs web perusahaan (disarankan):** unggah sebagai `https://<domain>/kebijakan-privasi/`.
+- **GitHub Pages:** butuh repositori publik atau paket GitHub berbayar.
+- **Layanan hosting statis gratis** seperti Netlify atau Cloudflare Pages: unggah file HTML-nya saja.
 
-## Penyimpanan & keamanan
-Data disimpan di layanan basis data [Supabase, wilayah server ...] dengan enkripsi saat transit (HTTPS) dan pembatasan akses per pengguna.
+## URL yang diisi di Play Console
 
-## Berbagi data
-Kami tidak menjual data Anda. Data hanya dibagikan kepada pihak yang diperlukan untuk proses investasi (mis. notaris, auditor) atau bila diwajibkan hukum.
+| Isian | URL |
+| --- | --- |
+| Kebijakan privasi (*App content → Privacy policy*) | `https://<domain>/kebijakan-privasi/` |
+| URL hapus akun (*Data safety → Data deletion*) | `https://<domain>/kebijakan-privasi/#hapus-akun` |
 
-## Hak Anda
-Anda dapat melihat dan memperbarui data di menu **Profil**, serta menghapus akun kapan saja melalui **Profil → Hapus Akun**. Permintaan lain dapat dikirim ke [email kontak].
+Bagian **Menghapus akun** menjelaskan cara menghapus akun lewat aplikasi maupun lewat email,
+sesuai syarat Google Play untuk aplikasi yang memiliki fitur akun.
 
-## Kontak
-[Nama perusahaan] · [alamat] · [email] · [telepon]
+Jika praktik data aplikasi berubah (misalnya menambah analitik, unggah dokumen KYC, atau izin
+perangkat baru), perbarui halaman ini dan formulir *Data safety* di Play Console.

@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kebijakan Privasi Modapack Fund</title>
+<meta name="description" content="Kebijakan privasi aplikasi Modapack Fund: data yang dikumpulkan, penggunaannya, dan hak Anda.">
+<style>
+  :root {
+    --bg: #F7F7FA;
+    --surface: #FFFFFF;
+    --text: #1E1A21;
+    --muted: #67646E;
+    --border: #E3E3EA;
+    --brand: #342B38;
+    --accent: #6E75AD;
+    --accent-soft: #ECEDF6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1A161C;
+      --surface: #241F27;
+      --text: #ECEAF0;
+      --muted: #A9A5B0;
+      --border: #3A3340;
+      --brand: #342B38;
+      --accent: #A3A9D6;
+      --accent-soft: #2E2A3B;
+      --mark: #4A4220;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1A161C;
+    --surface: #241F27;
+    --text: #ECEAF0;
+    --muted: #A9A5B0;
+    --border: #3A3340;
+    --brand: #342B38;
+    --accent: #A3A9D6;
+    --accent-soft: #2E2A3B;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  header {
+    background: var(--brand);
+    color: #fff;
+    padding: 40px 16px 32px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .04em; }
+  .brand svg { width: 36px; height: auto; flex: none; }
+  .brand span { color: #868DBC; font-weight: 700; letter-spacing: .3em; font-size: 13px; }
+  h1 { font-size: clamp(26px, 5vw, 34px); line-height: 1.2; margin: 20px 0 8px; }
+  .updated { color: #C9CCE4; margin: 0; }
+  main { padding: 24px 16px 64px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  @media (max-width: 480px) { .card { padding: 18px; } }
+  nav.toc { margin-bottom: 24px; }
+  nav.toc h2 { margin-top: 0; }
+  nav.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+  @media (max-width: 600px) { nav.toc ol { columns: 1; } }
+  nav.toc a { color: var(--accent); text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+  section { scroll-margin-top: 16px; }
+  article > section:first-child h2 { margin-top: 0; }
+  section + section { border-top: 1px solid var(--border); margin-top: 28px; padding-top: 4px; }
+  h2 { font-size: 20px; line-height: 1.3; margin: 24px 0 8px; }
+  h3 { font-size: 16px; margin: 18px 0 4px; }
+  p, li { color: var(--text); }
+  ul, ol { padding-left: 22px; }
+  li + li { margin-top: 4px; }
+  a { color: var(--accent); }
+  .muted { color: var(--muted); }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  th { background: var(--accent-soft); font-weight: 700; }
+  /* Di layar sempit, setiap baris tabel menjadi kartu bertumpuk. */
+  @media (max-width: 600px) {
+    table.stack thead { display: none; }
+    table.stack, table.stack tbody, table.stack tr, table.stack td { display: block; width: 100%; }
+    table.stack tr { border: 1px solid var(--border); border-radius: 12px; padding: 4px 0; margin-bottom: 12px; }
+    table.stack td { border: 0; padding: 6px 14px; }
+    table.stack td::before { content: attr(data-label); display: block; font-size: 13px; font-weight: 700; color: var(--muted); }
+  }
+  .callout {
+    background: var(--accent-soft);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 16px 0;
+  }
+  /* Bagian yang wajib diisi sebelum dipublikasikan. */
+  .isi { background: #FFF4C2; color: #3A2E00; border-radius: 4px; padding: 0 4px; font-weight: 600; }
+  footer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 32px; }
+  @media print {
+    header { background: none; color: #000; padding: 0; }
+    .brand span, .updated { color: #555; }
+    .card { border: 0; padding: 0; }
+    nav.toc { display: none; }
+    a { color: #000; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand" aria-label="Modapack Fund">
+      <svg viewBox="0 0 1000.0 873.1" aria-hidden="true" fill="#868DBC"><polygon points="106.0,873.1 922.2,873.1 1000.0,744.3 331.7,741.9 481.6,453.6 412.7,338.4"/><polygon points="408.1,23.4 0.0,730.2 72.6,862.0 408.9,284.4 583.6,558.4 717.8,556.4"/><polygon points="992.9,709.8 584.8,3.0 434.4,0.0 766.4,580.0 441.8,594.3 376.5,711.6"/></svg>
+      <div>MODAPACK<br><span>FUND</span></div>
+    </div>
+    <h1>Kebijakan Privasi</h1>
+    <p class="updated">Berlaku sejak <span class="isi">[tanggal berlaku]</span></p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <nav class="toc card" aria-label="Daftar isi">
+      <h2>Daftar isi</h2>
+      <ol>
+        <li><a href="#tentang">Tentang kebijakan ini</a></li>
+        <li><a href="#data">Data yang kami kumpulkan</a></li>
+        <li><a href="#tidak">Data yang tidak kami kumpulkan</a></li>
+        <li><a href="#penggunaan">Cara kami menggunakan data</a></li>
+        <li><a href="#dasar">Dasar pemrosesan</a></li>
+        <li><a href="#berbagi">Berbagi data dengan pihak lain</a></li>
+        <li><a href="#penyimpanan">Penyimpanan &amp; keamanan</a></li>
+        <li><a href="#retensi">Berapa lama data disimpan</a></li>
+        <li><a href="#hak">Hak Anda</a></li>
+        <li><a href="#hapus-akun">Menghapus akun</a></li>
+        <li><a href="#anak">Pengguna di bawah umur</a></li>
+        <li><a href="#perubahan">Perubahan kebijakan</a></li>
+        <li><a href="#kontak">Hubungi kami</a></li>
+      </ol>
+    </nav>
+
+    <article class="card">
+      <section id="tentang">
+        <h2>1. Tentang kebijakan ini</h2>
+        <p>Kebijakan ini menjelaskan bagaimana <span class="isi">[nama badan hukum, mis. PT Modapack ...]</span> ("Modapack", "kami") mengumpulkan, menggunakan, menyimpan, dan melindungi data pribadi Anda saat menggunakan aplikasi <strong>Modapack Fund</strong> ("Aplikasi").</p>
+        <p>Kami memproses data pribadi sesuai Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP). Dalam pemrosesan ini, Modapack bertindak sebagai <strong>pengendali data pribadi</strong>.</p>
+        <p>Aplikasi adalah sarana informasi proyek dan pengajuan minat investasi. Aplikasi <strong>tidak memproses pembayaran</strong>; perjanjian investasi dan transfer dana dilakukan terpisah dengan perusahaan.</p>
+      </section>
+
+      <section id="data">
+        <h2>2. Data yang kami kumpulkan</h2>
+        <div class="table-scroll">
+          <table class="stack">
+            <thead><tr><th scope="col">Jenis data</th><th scope="col">Rincian</th><th scope="col">Sumber</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Jenis data">Data akun</td><td data-label="Rincian">Alamat email dan kata sandi. Kata sandi disimpan dalam bentuk terenkripsi satu arah (<em>hash</em>) dan tidak dapat kami lihat.</td><td data-label="Sumber">Anda, saat mendaftar</td></tr>
+              <tr><td data-label="Jenis data">Data profil</td><td data-label="Rincian">Nama lengkap, nomor HP/WhatsApp, kota domisili, dan pekerjaan.</td><td data-label="Sumber">Anda, saat mendaftar atau mengubah profil</td></tr>
+              <tr><td data-label="Jenis data">Data pengajuan investasi</td><td data-label="Rincian">Proyek yang dipilih, nominal, catatan untuk tim, status pengajuan, serta waktu pengajuan dan perubahannya.</td><td data-label="Sumber">Anda, dan tim kami saat memperbarui status</td></tr>
+              <tr><td data-label="Jenis data">Data teknis masuk</td><td data-label="Rincian">Waktu masuk terakhir, serta catatan teknis seperti alamat IP dan jenis perangkat/peramban yang dicatat oleh penyedia layanan autentikasi untuk keamanan.</td><td data-label="Sumber">Otomatis, saat Anda masuk</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Data tambahan untuk verifikasi identitas (KYC), seperti salinan KTP atau NPWP, <strong>tidak dikumpulkan melalui Aplikasi</strong>. Bila diperlukan, tim kami akan memintanya secara langsung dalam proses penandatanganan perjanjian, dan data tersebut diatur oleh perjanjian yang Anda tandatangani.</p>
+        <h3>Data yang tersimpan di perangkat Anda</h3>
+        <p>Aplikasi menyimpan token sesi masuk di perangkat agar Anda tidak perlu masuk ulang setiap kali membuka Aplikasi. Token ini dihapus saat Anda keluar.</p>
+      </section>
+
+      <section id="tidak">
+        <h2>3. Data yang tidak kami kumpulkan</h2>
+        <ul>
+          <li>Kami <strong>tidak</strong> memakai alat analitik, pelacakan, atau iklan pihak ketiga.</li>
+          <li>Aplikasi <strong>tidak</strong> meminta akses ke lokasi, kontak, kamera, mikrofon, foto, atau file di perangkat Anda.</li>
+          <li>Kami <strong>tidak</strong> mengumpulkan data kartu pembayaran atau nomor rekening melalui Aplikasi.</li>
+          <li>Kami <strong>tidak</strong> menjual data pribadi Anda.</li>
+        </ul>
+      </section>
+
+      <section id="penggunaan">
+        <h2>4. Cara kami menggunakan data</h2>
+        <ul>
+          <li>Membuat dan mengelola akun Anda, serta mengamankan proses masuk.</li>
+          <li>Menampilkan proyek dan mencatat pengajuan minat investasi Anda.</li>
+          <li>Menghubungi Anda untuk menindaklanjuti pengajuan, termasuk verifikasi identitas dan penandatanganan perjanjian.</li>
+          <li>Menampilkan status pengajuan Anda di menu Portofolio.</li>
+          <li>Menjawab pertanyaan dan permintaan bantuan Anda.</li>
+          <li>Mencegah penyalahgunaan dan memenuhi kewajiban hukum yang berlaku.</li>
+        </ul>
+        <p>Kami tidak menggunakan data Anda untuk pengambilan keputusan otomatis yang berdampak hukum bagi Anda. Setiap pengajuan ditinjau oleh tim kami.</p>
+      </section>
+
+      <section id="dasar">
+        <h2>5. Dasar pemrosesan</h2>
+        <ul>
+          <li><strong>Persetujuan</strong> yang Anda berikan saat mendaftar dan mengirim pengajuan.</li>
+          <li><strong>Pemenuhan kewajiban perjanjian</strong>, yaitu langkah-langkah yang Anda minta sebelum dan saat menandatangani perjanjian investasi.</li>
+          <li><strong>Pemenuhan kewajiban hukum</strong> yang berlaku bagi perusahaan.</li>
+        </ul>
+        <p>Anda dapat menarik persetujuan kapan saja dengan menghapus akun atau menghubungi kami. Penarikan persetujuan tidak memengaruhi pemrosesan yang telah dilakukan sebelumnya.</p>
+      </section>
+
+      <section id="berbagi">
+        <h2>6. Berbagi data dengan pihak lain</h2>
+        <p>Data Anda hanya diakses oleh tim internal yang berwenang menangani investor. Kami melibatkan pihak berikut:</p>
+        <ul>
+          <li><strong>Supabase</strong>, penyedia layanan basis data dan autentikasi, sebagai pemroses data atas nama kami.</li>
+          <li><strong>Pihak profesional</strong> seperti notaris, konsultan hukum, atau auditor, sebatas yang diperlukan untuk proses investasi dan dengan kewajiban kerahasiaan.</li>
+          <li><strong>Instansi berwenang</strong>, bila diwajibkan oleh peraturan perundang-undangan atau perintah pengadilan.</li>
+        </ul>
+        <p>Jika Anda menekan tombol WhatsApp atau email di Aplikasi, Anda akan diarahkan ke aplikasi tersebut. Pesan yang Anda kirim melalui layanan itu tunduk pada kebijakan privasi masing-masing penyedia.</p>
+      </section>
+
+      <section id="penyimpanan">
+        <h2>7. Penyimpanan &amp; keamanan</h2>
+        <p>Data disimpan di server Supabase yang berlokasi di <span class="isi">[wilayah server, mis. Singapura]</span>. Karena berada di luar wilayah Indonesia, kami memastikan penyedia layanan menerapkan tingkat pelindungan data yang setara sebagaimana diatur dalam UU PDP.</p>
+        <p>Langkah keamanan yang kami terapkan antara lain:</p>
+        <ul>
+          <li>Seluruh komunikasi antara Aplikasi dan server dienkripsi dengan HTTPS.</li>
+          <li>Kata sandi disimpan dalam bentuk <em>hash</em>.</li>
+          <li>Aturan akses di tingkat basis data memastikan setiap investor hanya dapat melihat dan mengubah datanya sendiri.</li>
+          <li>Akses tim internal dibatasi pada personel yang memerlukannya.</li>
+        </ul>
+        <p>Tidak ada sistem yang sepenuhnya aman. Jika terjadi kegagalan pelindungan data pribadi, kami akan memberi tahu Anda dan otoritas terkait sesuai ketentuan UU PDP.</p>
+      </section>
+
+      <section id="retensi">
+        <h2>8. Berapa lama data disimpan</h2>
+        <ul>
+          <li>Data akun, profil, dan pengajuan disimpan selama akun Anda aktif.</li>
+          <li>Saat Anda menghapus akun, data tersebut dihapus dari sistem Aplikasi.</li>
+          <li>Dokumen perjanjian investasi yang telah ditandatangani dan catatan transaksi terkait disimpan terpisah selama diwajibkan oleh peraturan perundang-undangan, meskipun akun Aplikasi telah dihapus.</li>
+        </ul>
+      </section>
+
+      <section id="hak">
+        <h2>9. Hak Anda</h2>
+        <p>Sesuai UU PDP, Anda berhak untuk:</p>
+        <ul>
+          <li>Mendapatkan informasi tentang pemrosesan data pribadi Anda.</li>
+          <li>Mengakses dan memperoleh salinan data pribadi Anda.</li>
+          <li>Memperbaiki data yang tidak akurat. Sebagian besar data dapat Anda ubah sendiri di menu <strong>Profil</strong>.</li>
+          <li>Mengakhiri pemrosesan dan menghapus data pribadi Anda.</li>
+          <li>Menarik kembali persetujuan pemrosesan.</li>
+          <li>Mengajukan keberatan atas pemrosesan data.</li>
+        </ul>
+        <p>Untuk menggunakan hak-hak ini, hubungi kami melalui kontak di bagian <a href="#kontak">Hubungi kami</a>. Kami akan menanggapi permintaan Anda dalam jangka waktu yang ditetapkan UU PDP dan peraturan pelaksanaannya.</p>
+      </section>
+
+      <section id="hapus-akun">
+        <h2>10. Menghapus akun</h2>
+        <h3>Melalui Aplikasi</h3>
+        <ol>
+          <li>Buka Aplikasi Modapack Fund dan masuk ke akun Anda.</li>
+          <li>Buka menu <strong>Profil</strong>.</li>
+          <li>Ketuk <strong>Hapus Akun</strong>, lalu konfirmasi.</li>
+        </ol>
+        <p>Akun beserta data profil dan pengajuan Anda langsung dihapus.</p>
+        <h3>Tanpa Aplikasi</h3>
+        <p>Jika Anda tidak dapat lagi mengakses Aplikasi, kirim email ke <span class="isi">[email privasi]</span> dari alamat email yang terdaftar dengan judul <em>"Permintaan Hapus Akun Modapack Fund"</em>. Kami akan memverifikasi permintaan, menghapus akun Anda, dan mengirimkan konfirmasi melalui email.</p>
+        <div class="callout">Penghapusan akun tidak membatalkan perjanjian investasi yang telah ditandatangani. Hak dan kewajiban dalam perjanjian tersebut tetap berlaku sesuai isinya.</div>
+      </section>
+
+      <section id="anak">
+        <h2>11. Pengguna di bawah umur</h2>
+        <p>Aplikasi ditujukan untuk pengguna berusia 18 tahun ke atas. Kami tidak dengan sengaja mengumpulkan data anak. Jika Anda mengetahui ada anak yang mendaftar, hubungi kami agar datanya dapat dihapus.</p>
+      </section>
+
+      <section id="perubahan">
+        <h2>12. Perubahan kebijakan</h2>
+        <p>Kami dapat memperbarui kebijakan ini dari waktu ke waktu. Tanggal berlaku di bagian atas halaman akan diperbarui, dan untuk perubahan penting kami akan memberi tahu Anda melalui Aplikasi atau email.</p>
+      </section>
+
+      <section id="kontak">
+        <h2>13. Hubungi kami</h2>
+        <p>
+          <strong><span class="isi">[nama badan hukum]</span></strong><br>
+          <span class="isi">[alamat kantor lengkap]</span><br>
+          Email: <span class="isi">[email privasi]</span><br>
+          Telepon/WhatsApp: <span class="isi">[nomor telepon]</span>
+        </p>
+      </section>
+    </article>
+
+    <footer>&copy; <span class="isi">[tahun]</span> <span class="isi">[nama badan hukum]</span>. Modapack Fund.</footer>
+  </div>
+</main>
+</body>
+</html>
