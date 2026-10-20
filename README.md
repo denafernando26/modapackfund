@@ -70,7 +70,10 @@ mengubah status pengajuan.
    - Untuk akun pengembang pribadi baru: wajib *closed testing* dengan minimal 12 penguji selama 14 hari sebelum produksi.
 7. Promosikan rilis ke **Production** setelah lolos peninjauan.
 
-Ganti ikon di folder `assets/` dengan logo Modapack sebelum rilis.
+Aset merek ada di folder `assets/`:
+- Ikon aplikasi, ikon adaptif Android (termasuk versi monokrom), splash screen, dan favicon.
+- `assets/store/`: ikon Play Store 512×512 dan *feature graphic* 1024×500 untuk listing.
+- `assets/brand/`: simbol logo dalam format vektor (SVG) dan wordmark untuk latar gelap.
 
 ## ⚠️ Catatan regulasi (penting)
 
