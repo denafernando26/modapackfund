@@ -4,7 +4,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient, type User } from '@supabase/supabase-js';
 import { AppState, Platform } from 'react-native';
 
-import type { Backend, Investment, Profile, Project, SessionUser } from './types';
+import type {
+  AdminInvestment,
+  AdminProject,
+  Backend,
+  Investment,
+  Profile,
+  Project,
+  ProjectInput,
+  SessionUser,
+  StatusChange,
+} from './types';
 
 type ProjectRow = {
   id: string;
@@ -24,6 +34,7 @@ type ProjectRow = {
   closing_date: string | null;
   highlights: string[] | null;
   prospectus_url: string | null;
+  published: boolean;
 };
 
 type InvestmentRow = {
@@ -66,6 +77,80 @@ function toProject(r: ProjectRow): Project {
   };
 }
 
+function toAdminProject(r: ProjectRow): AdminProject {
+  return { ...toProject(r), published: r.published };
+}
+
+function toProjectRow(p: ProjectInput): Omit<ProjectRow, 'id'> {
+  return {
+    title: p.title,
+    category: p.category,
+    location: p.location,
+    summary: p.summary,
+    description: p.description,
+    image_url: p.imageUrl,
+    target_amount: p.targetAmount,
+    raised_amount: p.raisedAmount,
+    min_investment: p.minInvestment,
+    expected_return_pct: p.expectedReturnPct,
+    tenor_months: p.tenorMonths,
+    risk_level: p.riskLevel,
+    status: p.status,
+    closing_date: p.closingDate,
+    highlights: p.highlights,
+    prospectus_url: p.prospectusUrl,
+    published: p.published,
+  };
+}
+
+/** Baris hasil fungsi `admin_investments` (supabase/admin.sql). */
+type AdminInvestmentRow = {
+  id: string;
+  project_id: string;
+  project_title: string;
+  amount: number;
+  note: string | null;
+  status: Investment['status'];
+  created_at: string;
+  updated_at: string;
+  user_id: string;
+  investor_name: string | null;
+  investor_email: string | null;
+  investor_phone: string | null;
+  investor_city: string | null;
+  investor_occupation: string | null;
+};
+
+function toAdminInvestment(r: AdminInvestmentRow): AdminInvestment {
+  return {
+    id: r.id,
+    projectId: r.project_id,
+    projectTitle: r.project_title,
+    amount: Number(r.amount),
+    note: r.note ?? '',
+    status: r.status,
+    createdAt: r.created_at,
+    updatedAt: r.updated_at,
+    investor: {
+      id: r.user_id,
+      fullName: r.investor_name ?? '',
+      email: r.investor_email ?? '',
+      phone: r.investor_phone ?? '',
+      city: r.investor_city ?? '',
+      occupation: r.investor_occupation ?? '',
+    },
+  };
+}
+
+type StatusChangeRow = {
+  id: number;
+  from_status: StatusChange['fromStatus'];
+  to_status: StatusChange['toStatus'];
+  note: string | null;
+  changed_by_email: string | null;
+  created_at: string;
+};
+
 function toSessionUser(u: User | null | undefined): SessionUser | null {
   return u ? { id: u.id, email: u.email ?? '' } : null;
 }
@@ -75,6 +160,10 @@ function translateError(message: string): string {
   if (/email not confirmed/i.test(message)) return 'Email belum dikonfirmasi. Periksa kotak masuk Anda.';
   if (/already registered/i.test(message)) return 'Email sudah terdaftar.';
   if (/password should be/i.test(message)) return 'Kata sandi minimal 6 karakter.';
+  // update/insert + .single() tanpa baris hasil: diblokir RLS atau datanya tidak ada.
+  if (/cannot coerce the result to a single json object/i.test(message)) {
+    return 'Data tidak ditemukan atau Anda tidak berhak mengubahnya.';
+  }
   return message;
 }
 
@@ -219,6 +308,65 @@ export function createSupabaseBackend(url: string, anonKey: string): Backend {
           occupation: patch.occupation,
         }),
       );
+    },
+
+    async isAdmin() {
+      // Sebelum supabase/admin.sql dijalankan, fungsi ini belum ada: anggap bukan admin.
+      const { data, error } = await supabase.rpc('is_admin');
+      return !error && data === true;
+    },
+
+    async adminListInvestments() {
+      const rows = check(await supabase.rpc('admin_investments'));
+      return (rows as AdminInvestmentRow[]).map(toAdminInvestment);
+    },
+
+    async adminGetInvestment(id) {
+      const rows = check(await supabase.rpc('admin_investments', { investment_id: id }));
+      const row = (rows as AdminInvestmentRow[])[0];
+      return row ? toAdminInvestment(row) : null;
+    },
+
+    async adminInvestmentHistory(id) {
+      const rows = check(await supabase.rpc('admin_investment_history', { investment_id: id }));
+      return (rows as StatusChangeRow[]).map((r) => ({
+        id: String(r.id),
+        fromStatus: r.from_status,
+        toStatus: r.to_status,
+        note: r.note ?? '',
+        changedBy: r.changed_by_email ?? '',
+        createdAt: r.created_at,
+      }));
+    },
+
+    async adminSetInvestmentStatus(id, status, note) {
+      check(
+        await supabase.rpc('admin_set_investment_status', {
+          investment_id: id,
+          new_status: status,
+          status_note: note || null,
+        }),
+      );
+    },
+
+    async adminListProjects() {
+      const rows = check(await supabase.from('projects').select('*').order('created_at', { ascending: false }));
+      return (rows as ProjectRow[]).map(toAdminProject);
+    },
+
+    async adminGetProject(id) {
+      const row = check(await supabase.from('projects').select('*').eq('id', id).maybeSingle());
+      return row ? toAdminProject(row as ProjectRow) : null;
+    },
+
+    async adminSaveProject(id, input) {
+      const row = toProjectRow(input);
+      const saved = check(
+        id
+          ? await supabase.from('projects').update(row).eq('id', id).select('id').single()
+          : await supabase.from('projects').insert(row).select('id').single(),
+      ) as { id: string };
+      return saved.id;
     },
   };
 }

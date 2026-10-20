@@ -31,7 +31,8 @@ menyimpan data di perangkat. Cocok untuk melihat tampilan, bukan untuk produksi.
 ## Menghubungkan Supabase (backend produksi)
 
 1. Buat proyek gratis di <https://supabase.com>.
-2. Buka **SQL Editor**, jalankan `supabase/schema.sql`, lalu (opsional) `supabase/seed.sql`.
+2. Buka **SQL Editor**, jalankan `supabase/schema.sql`, lalu `supabase/admin.sql` (panel admin),
+   lalu (opsional) `supabase/seed.sql`.
    Untuk akun peninjau Google Play, lihat `docs/play-store-listing.md` dan `supabase/demo-reviewer.sql`.
 3. Salin `.env.example` menjadi `.env.local` dan isi `EXPO_PUBLIC_SUPABASE_URL` serta
    `EXPO_PUBLIC_SUPABASE_ANON_KEY` (Project Settings → API), juga nomor WhatsApp & email tim.
@@ -41,9 +42,23 @@ menyimpan data di perangkat. Cocok untuk melihat tampilan, bukan untuk produksi.
    `npm run cek-supabase -- --uji --email <email> --password <kata sandi>`.
 5. Jalankan ulang `npx expo start`.
 
-**Mengelola data (tim internal)** — lewat Supabase Dashboard → Table Editor:
-- `projects`: tambah/ubah proyek; centang `published` agar tampil; perbarui `raised_amount` setelah dana masuk.
-- `investments`: ubah `status` pengajuan (`contacted`, `approved`, `rejected`).
+**Mengelola data (tim internal)** — lewat **Panel Admin** di aplikasi (tab Profil → *Buka Panel Admin*):
+- **Pengajuan:** lihat semua pengajuan beserta kontak investor, ubah status
+  (`pending → contacted → approved/rejected`, koreksi kembali ke `contacted`), dan lihat riwayat statusnya.
+- **Proyek:** tambah/ubah proyek, publikasikan atau jadikan draf, dan perbarui dana terkumpul
+  setelah dana benar-benar masuk rekening.
+
+Mendaftarkan admin (akun harus sudah terdaftar) — jalankan di SQL Editor:
+
+```sql
+insert into public.admins (user_id)
+select id from auth.users where email = 'admin@modapack.id'
+on conflict do nothing;
+```
+
+Daftar admin hanya bisa diubah lewat SQL Editor. Hak akses ditegakkan di database (RLS dan fungsi
+`admin_*`), bukan oleh tampilan aplikasi. Supabase Dashboard → Table Editor tetap bisa dipakai;
+perubahan status di sana ikut tercatat di riwayat (tanpa nama pengubah).
 
 Keamanan dijaga dengan Row Level Security: investor hanya melihat data miliknya, hanya dapat
 mengajukan ke proyek yang terbuka dengan nominal ≥ minimum dan ≤ sisa kuota, dan tidak dapat

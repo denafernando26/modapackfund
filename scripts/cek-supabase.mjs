@@ -89,6 +89,39 @@ async function checkTables(supabase) {
   return allPresent;
 }
 
+// Fungsi admin (supabase/admin.sql) harus menolak akun yang bukan admin.
+async function checkAdminGuards(supabase, investmentId) {
+  const { data: isAdmin, error } = await supabase.rpc('is_admin');
+  if (error) {
+    if (error.code === 'PGRST202' || /could not find the function/i.test(error.message)) {
+      warn('Fungsi admin belum terpasang. Jalankan supabase/admin.sql untuk mengaktifkan panel admin.');
+    } else {
+      fail(`Gagal memeriksa status admin: ${error.message}`);
+    }
+    return;
+  }
+  if (isAdmin) {
+    warn('Akun uji ini terdaftar sebagai admin — uji pembatasan admin dilewati. Ulangi dengan akun investor.');
+    return;
+  }
+  ok('Akun investor tidak dikenali sebagai admin');
+
+  const list = await supabase.rpc('admin_investments');
+  if (list.error) ok('Investor tidak bisa membaca pengajuan semua investor');
+  else fail('Investor bisa membaca pengajuan semua investor', 'Jalankan ulang supabase/admin.sql.');
+
+  const approve = await supabase.rpc('admin_set_investment_status', {
+    investment_id: investmentId,
+    new_status: 'approved',
+  });
+  if (approve.error) ok('Investor tidak bisa menyetujui pengajuan sendiri');
+  else fail('Investor bisa menyetujui pengajuannya sendiri', 'Jalankan ulang supabase/admin.sql.');
+
+  const drafts = await supabase.from('projects').select('id').eq('published', false);
+  if (!drafts.error && drafts.data.length === 0) ok('Investor tidak melihat proyek draf');
+  else fail('Investor bisa melihat proyek draf', 'Periksa policy tabel projects.');
+}
+
 async function runFlowTest(supabase, url, key) {
   section('4. Uji alur investor');
   const email = option('--email');
@@ -192,6 +225,7 @@ async function runFlowTest(supabase, url, key) {
       fail(`Pengajuan valid ke "${open.title}" ditolak: ${valid.error.message}`);
     } else {
       ok(`Pengajuan valid ke "${open.title}" berhasil`);
+      await checkAdminGuards(supabase, valid.data.id);
       const cancel = await supabase.rpc('cancel_investment', { investment_id: valid.data.id });
       if (cancel.error) fail(`Pembatalan pengajuan gagal: ${cancel.error.message}`, 'Fungsi cancel_investment belum ada.');
       else ok('Pembatalan pengajuan berhasil');

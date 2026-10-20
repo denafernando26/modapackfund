@@ -4,17 +4,9 @@ import { Alert, FlatList, RefreshControl, StyleSheet, Text, View } from 'react-n
 import { colors, spacing } from '../../components/theme';
 import { Badge, Button, Card, Centered, ErrorText, Loading } from '../../components/ui';
 import { backend } from '../../lib/backend';
-import { formatDate, formatRupiah, INVESTMENT_STATUS_LABEL } from '../../lib/format';
-import type { Investment, InvestmentStatus } from '../../lib/types';
+import { formatDate, formatRupiah, INVESTMENT_STATUS_LABEL, INVESTMENT_STATUS_TONE } from '../../lib/format';
+import type { Investment } from '../../lib/types';
 import { useLoader } from '../../lib/useLoader';
-
-const TONE: Record<InvestmentStatus, 'neutral' | 'success' | 'warning' | 'danger'> = {
-  pending: 'warning',
-  contacted: 'neutral',
-  approved: 'success',
-  rejected: 'danger',
-  cancelled: 'danger',
-};
 
 export default function PortfolioScreen() {
   const { data, error, loading, refreshing, refresh } = useLoader(() => backend.listMyInvestments());
@@ -73,7 +65,7 @@ export default function PortfolioScreen() {
             <Text style={styles.title} numberOfLines={2}>
               {item.projectTitle}
             </Text>
-            <Badge label={INVESTMENT_STATUS_LABEL[item.status]} tone={TONE[item.status]} />
+            <Badge label={INVESTMENT_STATUS_LABEL[item.status]} tone={INVESTMENT_STATUS_TONE[item.status]} />
           </View>
           <Text style={styles.amount}>{formatRupiah(item.amount)}</Text>
           <Text style={styles.muted}>Diajukan {formatDate(item.createdAt)}</Text>
