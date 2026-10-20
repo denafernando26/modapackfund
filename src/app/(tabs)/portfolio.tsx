@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     marginBottom: spacing.lg,
   },
-  summaryLabel: { color: '#CFE3DA', fontSize: 12 },
+  summaryLabel: { color: colors.onPrimaryMuted, fontSize: 12 },
   summaryValue: { color: '#fff', fontSize: 17, fontWeight: '800', marginTop: 4 },
   heading: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: spacing.sm },
   row: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: spacing.sm },
