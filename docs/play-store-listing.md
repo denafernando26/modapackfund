@@ -59,7 +59,7 @@ PENTING UNTUK DIKETAHUI
 
 Setiap investasi mengandung risiko, termasuk kemungkinan kehilangan sebagian atau seluruh modal. Estimasi imbal hasil yang ditampilkan adalah proyeksi, bukan jaminan hasil. Baca informasi proyek dan perjanjian dengan saksama sebelum berinvestasi, dan pertimbangkan berkonsultasi dengan penasihat keuangan independen.
 
-Butuh bantuan? Hubungi tim investor Modapack di [email kontak] atau WhatsApp [nomor WhatsApp].
+Butuh bantuan? Hubungi tim investor Modapack di fernando@modapack.id atau WhatsApp +62 813-1740-0316.
 ```
 
 ## Pengaturan lain di Play Console
@@ -68,7 +68,7 @@ Butuh bantuan? Hubungi tim investor Modapack di [email kontak] atau WhatsApp [no
 | --- | --- |
 | Kategori aplikasi | Keuangan (*Finance*) |
 | Tag | Investasi, Keuangan |
-| Email kontak | Email tim investor (wajib) |
+| Email kontak | fernando@modapack.id |
 | Situs web | Situs resmi Modapack |
 | Kebijakan privasi | URL publik halaman `docs/kebijakan-privasi.html` (lihat `docs/kebijakan-privasi.md`) |
 | Target audiens | 18 tahun ke atas |
@@ -76,7 +76,7 @@ Butuh bantuan? Hubungi tim investor Modapack di [email kontak] atau WhatsApp [no
 
 ## Sebelum menyalin
 
-- Ganti `[email kontak]` dan `[nomor WhatsApp]` di akhir deskripsi lengkap.
+- Kontak di akhir deskripsi lengkap (fernando@modapack.id, +62 813-1740-0316) sama dengan yang tercantum di kebijakan privasi. Bila berubah, perbarui keduanya.
 - Hindari menambahkan klaim seperti "terbaik", "#1", "pasti untung", atau "imbal hasil dijamin". Google Play melarang klaim yang tidak dapat dibuktikan, dan klaim jaminan imbal hasil bertentangan dengan aturan pemasaran produk keuangan.
 - Jika perusahaan sudah memiliki izin atau terdaftar di OJK, cantumkan nomor izinnya di deskripsi lengkap. Jika belum, jangan menyebut OJK sama sekali.
 
@@ -85,7 +85,7 @@ Butuh bantuan? Hubungi tim investor Modapack di [email kontak] atau WhatsApp [no
 Google wajib bisa masuk ke aplikasi untuk meninjaunya. Siapkan akun khusus peninjau:
 
 1. **Buat akun:** Supabase Dashboard → **Authentication → Users → Add user → Create new user**.
-   - Email: `peninjau.play@modapack.co.id` (atau alamat lain milik perusahaan)
+   - Email: `peninjau.play@modapack.id` (atau alamat lain milik perusahaan)
    - Kata sandi: buat yang kuat dan khusus untuk akun ini
    - Centang **Auto Confirm User** agar bisa langsung masuk tanpa konfirmasi email
 2. **Isi data contoh:** jalankan `supabase/demo-reviewer.sql` di SQL Editor (ganti emailnya bila berbeda).
@@ -98,7 +98,7 @@ Google wajib bisa masuk ke aplikasi untuk meninjaunya. Siapkan akun khusus penin
 | Kolom | Isian |
 | --- | --- |
 | Name | Akun peninjau |
-| Username | `peninjau.play@modapack.co.id` |
+| Username | `peninjau.play@modapack.id` |
 | Password | *(kata sandi akun peninjau)* |
 | Any other information | *(teks di bawah)* |
 

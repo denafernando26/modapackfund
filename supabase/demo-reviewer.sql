@@ -10,7 +10,7 @@
 
 do $$
 declare
-  v_email    text := 'peninjau.play@modapack.co.id';
+  v_email    text := 'peninjau.play@modapack.id';
   v_user     uuid;
   v_projects record;
   v_count    int := 0;
