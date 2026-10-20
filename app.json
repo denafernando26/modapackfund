@@ -40,6 +40,12 @@
     ],
     "experiments": {
       "typedRoutes": false
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bef14337-52dc-4eda-819f-89cf41e0837c"
+      }
+    },
+    "owner": "ferdenando"
   }
 }
