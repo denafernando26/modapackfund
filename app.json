@@ -13,7 +13,6 @@
     },
     "android": {
       "package": "com.modapack.fund",
-      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#342B38",
         "foregroundImage": "./assets/android-icon-foreground.png",
