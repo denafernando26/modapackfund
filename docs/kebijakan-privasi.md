@@ -3,17 +3,20 @@
 Halaman kebijakan privasi siap publikasi ada di [`kebijakan-privasi.html`](kebijakan-privasi.html):
 satu file HTML mandiri (tanpa file pendukung), responsif, dan mendukung mode gelap.
 
-## Sebelum dipublikasikan
+## Data perusahaan yang tercantum
 
-1. Ganti semua bagian bersorot kuning (`class="isi"`). Cek sisa placeholder dengan:
-   `grep -o 'class="isi">[^<]*' docs/kebijakan-privasi.html`
-   - `[tanggal berlaku]`, `[tahun]`
-   - `[nama badan hukum]` (dua tempat, plus contoh di bagian 1)
-   - `[wilayah server]` — sesuai region proyek Supabase (Project Settings → General)
-   - `[email privasi]`, `[nomor telepon]`, `[alamat kantor lengkap]`
-2. Ganti setiap `<span class="isi">[...]</span>` utuh dengan teks biasa, supaya sorotan kuningnya ikut hilang.
-3. Minta konsultan hukum meninjau isinya, terutama bagian dasar pemrosesan, transfer data
-   ke luar negeri, dan retensi dokumen perjanjian.
+| Isian | Nilai |
+| --- | --- |
+| Badan hukum | PT Fajar Indah Arum |
+| Alamat | BEI Tower 1, Level 3 Unit 304, Senayan, Kebayoran Baru, Kota Jakarta Selatan, DKI Jakarta |
+| Email privasi | fernando@modapack.id |
+| Telepon/WhatsApp | +62 813-1740-0316 |
+| Berlaku sejak | 20 Oktober 2026 |
+| Lokasi server | Supabase, Singapura (Asia Tenggara) |
+
+Sebelum dipublikasikan, minta konsultan hukum meninjau isinya, terutama bagian dasar pemrosesan,
+transfer data ke luar negeri, dan retensi dokumen perjanjian. Bila ada perubahan isi yang penting,
+perbarui juga tanggal berlaku di bagian atas halaman.
 
 ## Tempat mempublikasikan
 
