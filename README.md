@@ -34,7 +34,11 @@ menyimpan data di perangkat. Cocok untuk melihat tampilan, bukan untuk produksi.
 2. Buka **SQL Editor**, jalankan `supabase/schema.sql`, lalu (opsional) `supabase/seed.sql`.
 3. Salin `.env.example` menjadi `.env.local` dan isi `EXPO_PUBLIC_SUPABASE_URL` serta
    `EXPO_PUBLIC_SUPABASE_ANON_KEY` (Project Settings → API), juga nomor WhatsApp & email tim.
-4. Jalankan ulang `npx expo start`.
+4. Periksa hasil setup dengan `npm run cek-supabase` (cek kunci API, koneksi, dan tabel).
+   Tambahkan `-- --uji` untuk menguji pendaftaran, aturan keamanan, dan pengajuan.
+   Bila *Confirm email* aktif, pakai akun yang sudah dikonfirmasi:
+   `npm run cek-supabase -- --uji --email <email> --password <kata sandi>`.
+5. Jalankan ulang `npx expo start`.
 
 **Mengelola data (tim internal)** — lewat Supabase Dashboard → Table Editor:
 - `projects`: tambah/ubah proyek; centang `published` agar tampil; perbarui `raised_amount` setelah dana masuk.
