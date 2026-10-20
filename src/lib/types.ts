@@ -36,6 +36,35 @@ export type Investment = {
   createdAt: string;
 };
 
+export type InvestorContact = {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  city: string;
+  occupation: string;
+};
+
+/** Pengajuan dilihat dari panel admin, lengkap dengan data investornya. */
+export type AdminInvestment = Investment & {
+  updatedAt: string;
+  investor: InvestorContact;
+};
+
+export type StatusChange = {
+  id: string;
+  fromStatus: InvestmentStatus | null;
+  toStatus: InvestmentStatus;
+  note: string;
+  /** Email pengubah; kosong bila diubah lewat Supabase Dashboard. */
+  changedBy: string;
+  createdAt: string;
+};
+
+export type AdminProject = Project & { published: boolean };
+
+export type ProjectInput = Omit<AdminProject, 'id'>;
+
 export type Profile = {
   id: string;
   email: string;
@@ -75,4 +104,15 @@ export interface Backend {
 
   getProfile(): Promise<Profile | null>;
   updateProfile(patch: Omit<Profile, 'id' | 'email'>): Promise<void>;
+
+  /** Status admin selalu ditentukan server; tampilan admin di aplikasi hanya pelengkap. */
+  isAdmin(): Promise<boolean>;
+  adminListInvestments(): Promise<AdminInvestment[]>;
+  adminGetInvestment(id: string): Promise<AdminInvestment | null>;
+  adminInvestmentHistory(id: string): Promise<StatusChange[]>;
+  adminSetInvestmentStatus(id: string, status: InvestmentStatus, note: string): Promise<void>;
+  adminListProjects(): Promise<AdminProject[]>;
+  adminGetProject(id: string): Promise<AdminProject | null>;
+  /** Membuat proyek baru bila `id` null; mengembalikan id proyek. */
+  adminSaveProject(id: string | null, input: ProjectInput): Promise<string>;
 }

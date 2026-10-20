@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { FlatList, Pressable, RefreshControl, StyleSheet, Text, View } from 'react-native';
+import { FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native';
 
 import { ProjectCard } from '../../components/ProjectCard';
 import { colors, spacing } from '../../components/theme';
-import { Centered, ErrorText, Loading } from '../../components/ui';
+import { Centered, ChipGroup, ErrorText, Loading } from '../../components/ui';
 import { backend } from '../../lib/backend';
 import type { ProjectStatus } from '../../lib/types';
 import { useLoader } from '../../lib/useLoader';
@@ -34,15 +34,7 @@ export default function ProjectsScreen() {
           <Text style={styles.heading}>Peluang Investasi</Text>
           <Text style={styles.sub}>Pilih proyek Modapack yang ingin Anda danai.</Text>
           <View style={styles.filters}>
-            {FILTERS.map((f) => (
-              <Pressable
-                key={f.value}
-                onPress={() => setFilter(f.value)}
-                style={[styles.chip, filter === f.value && styles.chipActive]}
-              >
-                <Text style={[styles.chipText, filter === f.value && { color: '#fff' }]}>{f.label}</Text>
-              </Pressable>
-            ))}
+            <ChipGroup options={FILTERS} value={filter} onChange={setFilter} />
           </View>
           <ErrorText message={error} />
         </View>
@@ -60,15 +52,5 @@ export default function ProjectsScreen() {
 const styles = StyleSheet.create({
   heading: { fontSize: 22, fontWeight: '800', color: colors.text },
   sub: { fontSize: 14, color: colors.muted, marginTop: 4 },
-  filters: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, marginVertical: spacing.md },
-  chip: {
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 999,
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.card,
-  },
-  chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
-  chipText: { fontSize: 13, fontWeight: '600', color: colors.text },
+  filters: { marginVertical: spacing.md },
 });

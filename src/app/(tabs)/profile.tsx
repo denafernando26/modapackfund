@@ -4,11 +4,13 @@ import { Alert, Linking, ScrollView, StyleSheet, Text, View } from 'react-native
 
 import { colors, spacing } from '../../components/theme';
 import { Button, Card, ErrorText, Field, Loading } from '../../components/ui';
+import { useAuth } from '../../lib/auth';
 import { backend, contact } from '../../lib/backend';
 import { useLoader } from '../../lib/useLoader';
 
 export default function ProfileScreen() {
   const { data: profile, loading } = useLoader(() => backend.getProfile());
+  const { isAdmin } = useAuth();
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [city, setCity] = useState('');
@@ -64,8 +66,15 @@ export default function ProfileScreen() {
     <ScrollView contentContainerStyle={{ padding: spacing.md, gap: spacing.md }} keyboardShouldPersistTaps="handled">
       <Card>
         <Text style={styles.email}>{profile?.email}</Text>
-        <Text style={styles.muted}>Akun investor</Text>
+        <Text style={styles.muted}>{isAdmin ? 'Akun admin' : 'Akun investor'}</Text>
       </Card>
+
+      {isAdmin ? (
+        <Card>
+          <Text style={styles.section}>Admin</Text>
+          <Button title="Buka Panel Admin" onPress={() => router.push('/admin')} />
+        </Card>
+      ) : null}
 
       <Card>
         <Text style={styles.section}>Data Diri</Text>
@@ -101,7 +110,7 @@ export default function ProfileScreen() {
       <Button title="Keluar" variant="outline" onPress={() => backend.signOut()} />
       <Button title="Hapus Akun" variant="danger" onPress={confirmDelete} />
       <Text style={[styles.muted, { textAlign: 'center' }]}>
-        Modapack Fund v1.0.0{backend.mode === 'demo' ? ' · mode demo' : ''}
+        Modapack Fund v1.1.0{backend.mode === 'demo' ? ' · mode demo' : ''}
       </Text>
     </ScrollView>
   );

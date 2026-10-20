@@ -108,6 +108,32 @@ export function Loading() {
   );
 }
 
+export function ChipGroup<T extends string>({
+  options,
+  value,
+  onChange,
+}: {
+  options: { label: string; value: T }[];
+  value: T;
+  onChange: (value: T) => void;
+}) {
+  return (
+    <View style={styles.chips}>
+      {options.map((o) => (
+        <Pressable
+          key={o.value}
+          accessibilityRole="button"
+          accessibilityState={{ selected: value === o.value }}
+          onPress={() => onChange(o.value)}
+          style={[styles.chip, value === o.value && styles.chipActive]}
+        >
+          <Text style={[styles.chipText, value === o.value && { color: '#fff' }]}>{o.label}</Text>
+        </Pressable>
+      ))}
+    </View>
+  );
+}
+
 export function Stat({ label, value }: { label: string; value: string }) {
   return (
     <View style={{ flex: 1 }}>
@@ -160,6 +186,17 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   centered: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: spacing.lg },
+  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  chip: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.card,
+  },
+  chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
+  chipText: { fontSize: 13, fontWeight: '600', color: colors.text },
   statLabel: { fontSize: 12, color: colors.muted },
   statValue: { fontSize: 15, fontWeight: '700', color: colors.text, marginTop: 2 },
 });

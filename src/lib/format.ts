@@ -61,3 +61,11 @@ export const INVESTMENT_STATUS_LABEL: Record<InvestmentStatus, string> = {
   rejected: 'Ditolak',
   cancelled: 'Dibatalkan',
 };
+
+export const INVESTMENT_STATUS_TONE: Record<InvestmentStatus, 'neutral' | 'success' | 'warning' | 'danger'> = {
+  pending: 'warning',
+  contacted: 'neutral',
+  approved: 'success',
+  rejected: 'danger',
+  cancelled: 'danger',
+};
