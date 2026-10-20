@@ -72,7 +72,7 @@ mengubah status pengajuan.
 
 Aset merek ada di folder `assets/`:
 - Ikon aplikasi, ikon adaptif Android (termasuk versi monokrom), splash screen, dan favicon.
-- `assets/store/`: ikon Play Store 512×512 dan *feature graphic* 1024×500 untuk listing.
+- `assets/store/`: ikon Play Store 512×512, *feature graphic* 1024×500, dan 5 screenshot ponsel 1080×1920 (`assets/store/screenshots/`) untuk listing.
 - `assets/brand/`: simbol logo dalam format vektor (SVG) dan wordmark untuk latar gelap.
 
 ## ⚠️ Catatan regulasi (penting)
