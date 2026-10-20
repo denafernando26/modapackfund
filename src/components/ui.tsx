@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   track: { height: 8, borderRadius: 4, backgroundColor: colors.primaryLight, overflow: 'hidden' },
-  fill: { height: 8, borderRadius: 4, backgroundColor: colors.accent },
+  fill: { height: 8, borderRadius: 4, backgroundColor: colors.accentStrong },
   badge: { alignSelf: 'flex-start', borderRadius: 999, paddingHorizontal: 10, paddingVertical: 4 },
   badgeText: { fontSize: 12, fontWeight: '700' },
   error: {

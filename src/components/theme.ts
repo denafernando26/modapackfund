@@ -1,12 +1,16 @@
 export const colors = {
-  primary: '#0B3D2E',
-  primaryLight: '#E3F0EA',
-  accent: '#D4A017',
-  background: '#F6F7F5',
+  // Warna merek dari logo Modapack.
+  primary: '#342B38',
+  primaryLight: '#ECEDF6',
+  accent: '#868DBC',
+  /** Lavender lebih gelap untuk grafik di atas latar terang (kontras ≥ 3:1). */
+  accentStrong: '#6E75AD',
+  onPrimaryMuted: '#C9CCE4',
+  background: '#F7F7FA',
   card: '#FFFFFF',
-  text: '#16201C',
-  muted: '#6B7672',
-  border: '#E1E5E2',
+  text: '#1E1A21',
+  muted: '#67646E',
+  border: '#E3E3EA',
   danger: '#B42318',
   dangerLight: '#FDECEA',
   success: '#1E7F4F',
