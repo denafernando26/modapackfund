@@ -70,7 +70,7 @@ Butuh bantuan? Hubungi tim investor Modapack di [email kontak] atau WhatsApp [no
 | Tag | Investasi, Keuangan |
 | Email kontak | Email tim investor (wajib) |
 | Situs web | Situs resmi Modapack |
-| Kebijakan privasi | URL publik dari `docs/kebijakan-privasi.md` |
+| Kebijakan privasi | URL publik halaman `docs/kebijakan-privasi.html` (lihat `docs/kebijakan-privasi.md`) |
 | Target audiens | 18 tahun ke atas |
 | Iklan | Tidak berisi iklan |
 

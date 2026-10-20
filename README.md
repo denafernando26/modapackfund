@@ -64,7 +64,7 @@ mengubah status pengajuan.
    (atau unggah `.aab` secara manual) ke jalur *Internal testing* terlebih dahulu.
 6. **Lengkapi listing Play Store:**
    - Ikon 512×512, feature graphic 1024×500, minimal 2 screenshot HP.
-   - URL **Kebijakan Privasi** publik (templat di `docs/kebijakan-privasi.md`).
+   - URL **Kebijakan Privasi** publik: halaman siap publikasi di `docs/kebijakan-privasi.html` (panduan di `docs/kebijakan-privasi.md`).
    - Formulir **Data safety**: nama, email, nomor HP (dikumpulkan, dienkripsi saat transit, dapat dihapus pengguna).
    - Formulir **Financial features**: pilih kategori yang sesuai dan lampirkan dokumen izin bila diminta.
    - Akun demo untuk peninjau Google (email + kata sandi) di bagian *App access*.
