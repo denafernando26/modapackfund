@@ -32,6 +32,7 @@ menyimpan data di perangkat. Cocok untuk melihat tampilan, bukan untuk produksi.
 
 1. Buat proyek gratis di <https://supabase.com>.
 2. Buka **SQL Editor**, jalankan `supabase/schema.sql`, lalu (opsional) `supabase/seed.sql`.
+   Untuk akun peninjau Google Play, lihat `docs/play-store-listing.md` dan `supabase/demo-reviewer.sql`.
 3. Salin `.env.example` menjadi `.env.local` dan isi `EXPO_PUBLIC_SUPABASE_URL` serta
    `EXPO_PUBLIC_SUPABASE_ANON_KEY` (Project Settings → API), juga nomor WhatsApp & email tim.
 4. Periksa hasil setup dengan `npm run cek-supabase` (cek kunci API, koneksi, dan tabel).
